@@ -1,0 +1,170 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+.img-container {
+  height: 300px;
+}
+
+.hero-image {
+  background-size: cover;
+  width: 100%;
+}
+
+.tournament-details {
+  /* margin-top: 10px; */
+  /* margin-bottom: 10px; */
+  font-size: 24px;
+  background-color: #1f253e;
+  min-height: 140px;
+  width: 100%;
+  color: #898996;
+  text-align: center;
+  display: flex;
+  justify-content: center; /* align horizontal */
+  align-items: center;
+}
+
+.tournament-name {
+  color: #898996;
+  text-align: center;
+  margin-top: 9px;
+}
+
+.tournament-prize {
+  color: #fff;
+  text-align: center;
+}
+
+.tab-data {
+  height: 720px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 100%;
+  /* margin-left: -15px; */
+}
+
+body {
+  background-color: transparent !important;
+  font-family: 'Open Sans', serif;
+}
+
+.donor-container {
+  height: 120px;
+  width: 100%;
+  padding: 4px;
+  border-bottom: 1px solid #a8a8a8;
+  margin-left: 1px;
+  margin-right: 1px;
+  overflow-x: hidden;
+}
+
+.donor-details {
+  margin-top: 13px;
+}
+
+.donor-info {
+  vertical-align: middle;
+  background-color: white;
+}
+
+.donor-img {
+  margin-left: 26px;
+}
+
+.recent-donation {
+  margin-top: 2px;
+}
+
+.tab-content {
+  height: 600px !important;
+  overflow-y: auto !important;
+  overflow-x: hidden;
+}
+
+.donation-amt {
+  float: right;
+  margin-right: 15px;
+}
+
+.donation-comment {
+  height: 72px;
+  overflow: hidden;
+}
+
+.nav-tab {
+  height: 60px;
+  background-color: #b6b6bd;
+  display: flex;
+  justify-content: center; /* align horizontal */
+  align-items: center;
+}
+
+.nav-tab > span {
+  font-weight: bold;
+  cursor: default;
+}
+
+.nav-tab.active {
+  background-color: #fff;
+}
+
+.footer {
+  background-color: #1f253e;
+  height: 70px;
+  width: 100%;
+  display: flex;
+  justify-content: center; /* align horizontal */
+  align-items: center;
+}
+
+.footer-text {
+  color: #fff;
+  font-size: 24px;
+  margin-left: 5px;
+}
+
+.star-img {
+  margin-top: -8px;
+}
+
+#root-videocomponent {
+  float: right;
+}
+
+.bounty {
+  height: 1500px;
+  background-color: #fff;
+  margin-top: -24px;
+  float: right;
+}
+
+.bounty-container {
+  height: 1500px;
+  background-color: #fff;
+  float: right;
+}
+
+.bounty-error {
+  margin-top: 100px;
+}
+
+.container {
+  width: 1140px !important;
+}
+
+.max-width {
+  width: 100%;
+}
+
+.top-padding {
+  padding-top: 20px;
+}
+
+.back-arrow,
+.next-arrow {
+  background-color: #181d34;
+  display: flex;
+  justify-content: center; /* align horizontal */
+  align-items: center;
+  height: 100%;
+  cursor: default;
+}

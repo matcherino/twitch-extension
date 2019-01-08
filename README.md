@@ -1,7 +1,3 @@
-# Twitch Extension Starter
-
-This project will get you started developing Twitch Extensions using React!
-
 ## Getting started
 
 1. Install with yarn or npm:
@@ -38,11 +34,11 @@ To test your extension on Twitch while running the development server (`yarn sta
 
 In Short:
 
-* Your viewer page is being displayed on your channel either as a video overlay (when your channel is live) or panel. You can choose between overlay or panel when creating the extension.
+- Your viewer page is being displayed on your channel either as a video overlay (when your channel is live) or panel. You can choose between overlay or panel when creating the extension.
 
-* Your config page is being displayed in your streamer's extensions dashboard, after installing the extension.
+- Your config page is being displayed in your streamer's extensions dashboard, after installing the extension.
 
-* Your live config page is being displayed in your streamer's live dashboard, after installing and activating the extension.
+- Your live config page is being displayed in your streamer's live dashboard, after installing and activating the extension.
 
 ## Packaged ZIP
 

@@ -252,18 +252,30 @@ class VideoComponent extends React.Component {
                     className="tournament-details"
                     style={{height: tournamentDetailScreenHeight}}
                   >
-                    <div className="col-1 back-arrow" onClick={() => this.back(index)}>
-                      &lt;
+                    <div className="page-indicator-container">
+                      {bountyIds.map((bounty, i) => {
+                        return (
+                          <div className={`page-indicator ${i === index ? 'highlighted' : ''}`} />
+                        );
+                      })}
                     </div>
-                    <div className="col-10">
+                    {bountyIds.length > 1 && (
+                      <div className="col-1 back-arrow" onClick={() => this.back(index)}>
+                        &lt;
+                      </div>
+                    )}
+
+                    <div className={bountyIds.length > 1 ? 'col-10' : 'col-12'}>
                       <div className="tournament-name">{bounty.title}</div>
                       <div className="tournament-prize">
                         {accounting.formatMoney(bounty.balance / 100)}
                       </div>
                     </div>
-                    <div className="col-1 next-arrow" onClick={() => this.next(index)}>
-                      &gt;
-                    </div>
+                    {bountyIds.length > 1 && (
+                      <div className="col-1 next-arrow" onClick={() => this.next(index)}>
+                        &gt;
+                      </div>
+                    )}
                   </div>
                 </div>
                 <div className="row">

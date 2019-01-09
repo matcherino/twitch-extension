@@ -168,3 +168,22 @@ body {
   height: 100%;
   cursor: default;
 }
+
+.page-indicator {
+  width: 27px;
+  height: 2px;
+  margin-left: 5px;
+  background-color: gray;
+}
+
+.highlighted {
+  background-color: #fff;
+}
+
+.page-indicator-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: absolute;
+  margin-top: -62px;
+}

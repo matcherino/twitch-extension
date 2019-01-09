@@ -255,7 +255,10 @@ class VideoComponent extends React.Component {
                     <div className="page-indicator-container">
                       {bountyIds.map((bounty, i) => {
                         return (
-                          <div className={`page-indicator ${i === index ? 'highlighted' : ''}`} />
+                          <div
+                            key={i}
+                            className={`page-indicator ${i === index ? 'highlighted' : ''}`}
+                          />
                         );
                       })}
                     </div>

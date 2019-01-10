@@ -187,3 +187,8 @@ body {
   position: absolute;
   margin-top: -62px;
 }
+
+.tournament-id-help {
+  font-size: 18px;
+  color: gray;
+}

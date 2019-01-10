@@ -252,16 +252,19 @@ class VideoComponent extends React.Component {
                     className="tournament-details"
                     style={{height: tournamentDetailScreenHeight}}
                   >
-                    <div className="page-indicator-container">
-                      {bountyIds.map((bounty, i) => {
-                        return (
-                          <div
-                            key={i}
-                            className={`page-indicator ${i === index ? 'highlighted' : ''}`}
-                          />
-                        );
-                      })}
-                    </div>
+                    {bountyIds.length > 1 && (
+                      <div className="page-indicator-container">
+                        {bountyIds.map((bounty, i) => {
+                          return (
+                            <div
+                              key={i}
+                              className={`page-indicator ${i === index ? 'highlighted' : ''}`}
+                            />
+                          );
+                        })}
+                      </div>
+                    )}
+
                     {bountyIds.length > 1 && (
                       <div className="col-1 back-arrow" onClick={() => this.back(index)}>
                         &lt;

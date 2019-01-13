@@ -1,3 +1,5 @@
 
 .icon-layout:before { content: '\e800'; } /* '' */
+.icon-cancel-circled2:before { content: '\e801'; } /* '' */
+.icon-cancel-circled:before { content: '\e802'; } /* '' */
 .icon-question-circle-o:before { content: '\f29c'; } /* '' */

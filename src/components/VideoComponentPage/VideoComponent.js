@@ -195,6 +195,10 @@ class VideoComponent extends React.Component {
       });
   };
 
+  minimize = () => {
+    window.Twitch.ext.actions.minimize();
+  };
+
   render() {
     const {
       bounty,
@@ -203,11 +207,11 @@ class VideoComponent extends React.Component {
       bountyId,
       activeTab,
       index,
-      parentScreenHeight,
       footerHeight,
       headerImgScreenHeight,
       tabDataScreenHeight,
-      tournamentDetailScreenHeight
+      tournamentDetailScreenHeight,
+      parentScreenHeight
     } = this.state;
     const donations =
       bounty &&
@@ -243,9 +247,11 @@ class VideoComponent extends React.Component {
           <div className=" pull-right max-width">
             {!_.isEmpty(bounty) && !bountyNotFoundError && (
               <div className="col-6 bounty" style={{height: 'auto'}}>
-                <br />
                 <div className="row img-container" style={{height: headerImgScreenHeight}}>
                   <img className="hero-image" src={bounty.meta.backgroundImg} />
+                  <div className="close-btn-container" onClick={this.minimize}>
+                    <i className="close-icon icon-cancel-circled2" />
+                  </div>
                 </div>
                 <div className="row">
                   <div
@@ -313,13 +319,7 @@ class VideoComponent extends React.Component {
                 </div>
                 <div className="row">
                   <div className="footer" style={{height: footerHeight}}>
-                    <img
-                      className="rounded-circle"
-                      src={favicon}
-                      width="30"
-                      height="30"
-                      onClick={this.show}
-                    />{' '}
+                    <img className="rounded-circle" src={favicon} width="30" height="30" />{' '}
                     <span className="footer-text">Powered by Matcherino</span>
                   </div>
                 </div>
@@ -327,11 +327,16 @@ class VideoComponent extends React.Component {
             )}
 
             {bounty && bountyNotFoundError && (
-              <div className="col-6 bounty-container">
-                <div className="bounty-error">
+              <div className="col-6 bounty-container" style={{height: parentScreenHeight}}>
+                <div className="row bounty-error">
+                  <div className="close-btn-container-error">
+                    <span onClick={this.minimize}>
+                      <i className="close-icon icon-cancel-circled2" />
+                    </span>
+                  </div>
                   <h3>Tournament ID {bountyId} not found.</h3>
                   {bountyIds.length > 1 && (
-                    <div>
+                    <div className="full-width">
                       <span>
                         <button
                           disabled={bountyIds[0] === bountyId}
@@ -354,6 +359,10 @@ class VideoComponent extends React.Component {
                     </div>
                   )}
                 </div>
+                <div className="error-page footer" style={{height: footerHeight}}>
+                  <img className="rounded-circle" src={favicon} width="30" height="30" />{' '}
+                  <span className="footer-text">Powered by Matcherino</span>
+                </div>
               </div>
             )}
           </div>
@@ -366,13 +375,13 @@ class VideoComponent extends React.Component {
     this.setState({activeTab: tab});
   };
 
-  show = () => {
-    this.setState({showOverlay: true});
-  };
+  // show = () => {
+  //   this.setState({showOverlay: true});
+  // };
 
-  hide = () => {
-    this.setState({showOverlay: false});
-  };
+  // hide = () => {
+  //   this.setState({showOverlay: false});
+  // };
 
   back = index => {
     const {bountyIds, bountyId} = this.state;

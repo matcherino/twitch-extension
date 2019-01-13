@@ -17,6 +17,18 @@
       "css": "question-circle-o",
       "code": 62108,
       "src": "fontawesome"
+    },
+    {
+      "uid": "74415da8e36ed0afcea9b2b1454f4176",
+      "css": "cancel-circled2",
+      "code": 59393,
+      "src": "elusive"
+    },
+    {
+      "uid": "0f4cae16f34ae243a6144c18a003f2d8",
+      "css": "cancel-circled",
+      "code": 59394,
+      "src": "fontawesome"
     }
   ]
 }

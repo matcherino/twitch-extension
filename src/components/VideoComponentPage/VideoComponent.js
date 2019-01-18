@@ -1,6 +1,6 @@
 import React from 'react';
-import '../../pages/bootstrap.min.css';
-import '../../pages/styles.css';
+// import '../../pages/bootstrap.min.css';
+// import '../../pages/styles.css';
 import _ from 'lodash';
 import accounting from 'accounting';
 import star1 from '../Images/1star.png';

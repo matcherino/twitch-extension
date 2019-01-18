@@ -1,8 +1,8 @@
 Arguments: 
-  /home/coder/.nvm/versions/node/v8.12.0/bin/node /home/coder/.nvm/versions/node/v8.12.0/bin/yarn add axios;
+  /home/coder/.nvm/versions/node/v8.12.0/bin/node /home/coder/.nvm/versions/node/v8.12.0/bin/yarn package
 
 PATH: 
-  /tmp/yarn--1546480725167-0.2576040342130632:/home/coder/twitch-extension/twitch-extension/node_modules/.bin:/home/coder/.config/yarn/link/node_modules/.bin:/home/coder/twitch-extension/twitch-extension/node_modules/.bin:/home/coder/.config/yarn/link/node_modules/.bin:/home/coder/.nvm/versions/node/v8.12.0/libexec/lib/node_modules/npm/bin/node-gyp-bin:/home/coder/.nvm/versions/node/v8.12.0/lib/node_modules/npm/bin/node-gyp-bin:/home/coder/.nvm/versions/node/v8.12.0/bin/node_modules/npm/bin/node-gyp-bin:/home/coder/.yarn/bin::/home/coder/opt/bin:/home/coder/dotfiles/bin:/usr/local/bin:/usr/local/sbin:/home/coder/opt/vendor/go/bin:/home/coder/opt/volumes:/home/coder/opt/var:/home/coder/opt/share:/home/coder/opt/man:/home/coder/opt/include:/home/coder/opt/etc:/home/coder/opt/bin:/home/coder/opt/bin:/home/coder/.local/bin:./node_modules/.bin:~/.yarn/bin:/home/coder/.nvm/versions/node/v8.12.0/bin:./node_modules/.bin:/home/coder/go/bin:/home/coder/opt/vendor/go/bin:/usr/sbin:/sbin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin::/home/coder/.fzf/bin
+  /home/coder/.yarn/bin::/home/coder/opt/bin:/home/coder/dotfiles/bin:/usr/local/bin:/usr/local/sbin:/home/coder/opt/vendor/go/bin:/home/coder/opt/volumes:/home/coder/opt/var:/home/coder/opt/share:/home/coder/opt/man:/home/coder/opt/include:/home/coder/opt/etc:/home/coder/opt/bin:/home/coder/opt/bin:/home/coder/.local/bin:./node_modules/.bin:~/.yarn/bin:/home/coder/.nvm/versions/node/v8.12.0/bin:./node_modules/.bin:/home/coder/go/bin:/home/coder/opt/vendor/go/bin:/usr/sbin:/sbin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin::/home/coder/.fzf/bin
 
 Yarn version: 
   1.12.3
@@ -14,17 +14,13 @@ Platform:
   linux x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/axios;: Not found
-      at Request.params.callback [as _callback] (/home/coder/.nvm/versions/node/v8.12.0/lib/node_modules/yarn/lib/cli.js:65894:18)
-      at Request.self.callback (/home/coder/.nvm/versions/node/v8.12.0/lib/node_modules/yarn/lib/cli.js:129018:22)
-      at emitTwo (events.js:126:13)
-      at Request.emit (events.js:214:7)
-      at Request.<anonymous> (/home/coder/.nvm/versions/node/v8.12.0/lib/node_modules/yarn/lib/cli.js:129990:10)
-      at emitOne (events.js:116:13)
-      at Request.emit (events.js:211:7)
-      at IncomingMessage.<anonymous> (/home/coder/.nvm/versions/node/v8.12.0/lib/node_modules/yarn/lib/cli.js:129912:12)
-      at Object.onceWrapper (events.js:313:30)
-      at emitNone (events.js:111:20)
+  SyntaxError: /home/coder/twitch-extension/github/twitch-extension/package.json: Unexpected token / in JSON at position 666
+      at JSON.parse (<anonymous>)
+      at /home/coder/.nvm/versions/node/v8.12.0/lib/node_modules/yarn/lib/cli.js:1631:59
+      at Generator.next (<anonymous>)
+      at step (/home/coder/.nvm/versions/node/v8.12.0/lib/node_modules/yarn/lib/cli.js:304:30)
+      at /home/coder/.nvm/versions/node/v8.12.0/lib/node_modules/yarn/lib/cli.js:315:13
+      at <anonymous>
 
 npm manifest: 
   {
@@ -37,19 +33,24 @@ npm manifest:
     "scripts": {
       "start": "concurrently \"parcel watch src/pages/config.html src/pages/live_config.html src/pages/mobile.html src/pages/panel.html src/pages/video_component.html src/pages/video_overlay.html -d dist --public-url ./\" \"yarn dev-server\"",
       "dev-server": "node server.js",
-      "build": "parcel build src/pages/config.html src/pages/live_config.html src/pages/mobile.html src/pages/panel.html src/pages/video_component.html src/pages/video_overlay.html -d dist --no-minify --public-url ./",
+      "build": "parcel build src/pages/config.html src/pages/video_component.html -d dist --no-minify --public-url ./",
+      // "build": "parcel build src/pages/config.html src/pages/live_config.html src/pages/mobile.html src/pages/panel.html src/pages/video_component.html src/pages/video_overlay.html -d dist --no-minify --public-url ./",
       "zip": "cross-env bestzip dist_zip/$npm_package_version.zip dist/*",
       "package": "npm run build && npm run zip"
     },
     "dependencies": {
+      "accounting": "^0.4.1",
       "axios": "^0.18.0",
       "babel-polyfill": "^6.26.0",
       "jsonwebtoken": "^8.4.0",
+      "lodash": "^4.17.11",
       "node-fetch": "^2.3.0",
       "react": "^16.2.0",
       "react-bootstrap": "^1.0.0-beta.3",
       "react-dom": "^16.2.0",
-      "redux": "^4.0.1"
+      "react-toastify": "^4.5.2",
+      "redux": "^4.0.1",
+      "vague-time": "^2.4.2"
     },
     "devDependencies": {
       "babel-eslint": "7.2.3",
@@ -113,6 +114,11 @@ Lockfile:
     dependencies:
       mime-types "~2.1.18"
       negotiator "0.6.1"
+  
+  accounting@^0.4.1:
+    version "0.4.1"
+    resolved "https://registry.yarnpkg.com/accounting/-/accounting-0.4.1.tgz#87dd4103eff7f4460f1e186f5c677ed6cf566883"
+    integrity sha1-h91BA+/39EYPHhhvXGd+1s9WaIM=
   
   acorn-jsx@^3.0.0:
     version "3.0.1"
@@ -3144,6 +3150,11 @@ Lockfile:
     version "4.17.10"
     resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.10.tgz#1b7793cf7259ea38fb3661d4d38b3260af8ae4e7"
   
+  lodash@^4.17.11:
+    version "4.17.11"
+    resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
+    integrity sha512-cQKh8igo5QUhZ7lg38DYWAxMvjSAKG0A8wGSVimP07SIUEK2UO+arSRKbRZWtelMtN5V0Hkwh5ryOto/SshYIg==
+  
   lodash@~3.10.0, lodash@~3.10.1:
     version "3.10.1"
     resolved "https://registry.yarnpkg.com/lodash/-/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
@@ -4314,6 +4325,15 @@ Lockfile:
     dependencies:
       warning "^3.0.0"
   
+  react-toastify@^4.5.2:
+    version "4.5.2"
+    resolved "https://registry.yarnpkg.com/react-toastify/-/react-toastify-4.5.2.tgz#a75b5f8b6219f62d4aacd0455d578a53341e37ca"
+    integrity sha512-KymDDhkcX5EvFht17nO0MCsegM/Kdhyfxhi+WQl2tE3IxJrueOhY6TUnALTfvz7eDRUjPYBGb+ywWqWrGyvBnw==
+    dependencies:
+      classnames "^2.2.6"
+      prop-types "^15.6.0"
+      react-transition-group "^2.4.0"
+  
   react-transition-group@^2.4.0:
     version "2.5.2"
     resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-2.5.2.tgz#9457166a9ba6ce697a3e1b076b3c049b9fb2c408"
@@ -5215,6 +5235,11 @@ Lockfile:
   v8-compile-cache@^2.0.0:
     version "2.0.0"
     resolved "https://registry.yarnpkg.com/v8-compile-cache/-/v8-compile-cache-2.0.0.tgz#526492e35fc616864284700b7043e01baee09f0a"
+  
+  vague-time@^2.4.2:
+    version "2.4.2"
+    resolved "https://registry.yarnpkg.com/vague-time/-/vague-time-2.4.2.tgz#28cb39384419e460c8788393709ab32991db1657"
+    integrity sha512-28IHT/x6pmAhUPV/wXDHFWNouZLynayka5hvmbntsT838vvx30Qa3k+3TVKwLwty/FkfgJdStlGxrLNcrDJEhA==
   
   validate-npm-package-license@^3.0.1:
     version "3.0.3"

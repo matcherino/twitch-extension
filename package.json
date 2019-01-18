@@ -6,9 +6,9 @@
   "author": "Martin Beierling <mbeierling@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "concurrently \"parcel watch src/pages/config.html src/pages/live_config.html src/pages/mobile.html src/pages/panel.html src/pages/video_component.html src/pages/video_overlay.html -d dist --public-url ./\" \"yarn dev-server\"",
+    "start": "concurrently \"parcel watch src/pages/config.html src/pages/video_component.html -d dist --public-url ./\" \"yarn dev-server\"",
     "dev-server": "node server.js",
-    "build": "parcel build src/pages/config.html src/pages/live_config.html src/pages/mobile.html src/pages/panel.html src/pages/video_component.html src/pages/video_overlay.html -d dist --no-minify --public-url ./",
+    "build": "parcel build src/pages/config.html src/pages/video_component.html -d dist --no-minify --public-url ./",
     "zip": "cross-env bestzip dist_zip/$npm_package_version.zip dist/*",
     "package": "npm run build && npm run zip"
   },

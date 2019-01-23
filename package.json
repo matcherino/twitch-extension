@@ -10,7 +10,7 @@
     "dev-server": "node server.js",
     "build": "parcel build src/pages/config.html src/pages/video_component.html -d dist --no-minify --public-url ./",
     "zip": "cross-env bestzip dist_zip/$npm_package_version.zip dist/*",
-    "package": "npm run build && npm run zip"
+    "package": "rm -rf dist && npm run build && npm run zip"
   },
   "dependencies": {
     "accounting": "^0.4.1",

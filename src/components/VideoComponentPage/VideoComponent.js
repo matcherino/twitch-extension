@@ -301,7 +301,7 @@ class VideoComponent extends React.Component {
                     className={`col-6 nav-tab ${activeTab === 'donors' && 'active'}`}
                     onClick={() => this.setActiveTab('donors')}
                   >
-                    <span>Donors</span>
+                    <span>Supporters</span>
                   </div>
                 </div>
                 <div className="row">

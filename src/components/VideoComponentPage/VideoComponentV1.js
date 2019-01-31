@@ -248,7 +248,7 @@ class VideoComponent extends React.Component {
             {!_.isEmpty(bounty) && !bountyNotFoundError && (
               <div className="col-6 bounty" style={{height: 'auto'}}>
                 <div className="row img-container" style={{height: headerImgScreenHeight}}>
-                  <img className="hero-image" src={bounty.meta.backgroundImg} />
+                  <img className="hero-image" src={bounty.meta.backgroundImg} alt=""/>
                   <div className="close-btn-container" onClick={this.minimize}>
                     <i className="close-icon icon-cancel-circled2" />
                   </div>
@@ -319,7 +319,7 @@ class VideoComponent extends React.Component {
                 </div>
                 <div className="row">
                   <div className="footer" style={{height: footerHeight}}>
-                    <img className="rounded-circle" src={favicon} width="30" height="30" />{' '}
+                    <img className="rounded-circle" src={favicon} width="30" height="30" alt=""/>{' '}
                     <span className="footer-text">Powered by Matcherino</span>
                   </div>
                 </div>
@@ -360,7 +360,7 @@ class VideoComponent extends React.Component {
                   )}
                 </div>
                 <div className="error-page footer" style={{height: footerHeight}}>
-                  <img className="rounded-circle" src={favicon} width="30" height="30" />{' '}
+                  <img className="rounded-circle" src={favicon} width="30" height="30" alt=""/>{' '}
                   <span className="footer-text">Powered by Matcherino</span>
                 </div>
               </div>
@@ -422,6 +422,7 @@ class VideoComponent extends React.Component {
                 src={donor.avatar !== '' ? donor.avatar : defautlAvatr}
                 height="70"
                 width="70"
+                alt=""
               />
             </div>
           </div>
@@ -434,7 +435,7 @@ class VideoComponent extends React.Component {
                   {accounting.formatMoney(donor.amount / 100)}{' '}
                   {type === 'leaderboard' && (
                     <span>
-                      <img className="star-img" src={images[index]} width="30" height="30" />
+                      <img className="star-img" src={images[index]} width="30" height="30" alt=""/>
                     </span>
                   )}
                 </span>

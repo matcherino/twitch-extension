@@ -120,7 +120,7 @@ class VideoComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showOverlay: false,
+      showOverlay: true,
       key: 'donors',
       bountyIds: calculateTournamentId(),
       bountyId: getFirstTournamentId(),
@@ -134,8 +134,7 @@ class VideoComponent extends React.Component {
       headerImgScreenHeight: window.innerHeight / 3.88,
       tournamentDetailScreenHeight: window.innerHeight / 7.95,
       tabDataScreenHeight: window.innerHeight / 2,
-      footerHeight: window.innerHeight / 14.3,
-      showOverlay: true
+      footerHeight: window.innerHeight / 14.3
     };
   }
 
@@ -151,7 +150,7 @@ class VideoComponent extends React.Component {
       tabDataScreenHeight: window.innerHeight / 2,
       footerHeight: window.innerHeight / 14.3
     });
-  }
+  };
 
   componentDidMount() {
     this.getDonationInterval = setInterval(this.getDonation, 10000);
@@ -262,6 +261,7 @@ class VideoComponent extends React.Component {
                   onClick={this.toggle}
                   width="120"
                   height="120"
+                  alt=""
                 />
               </div>
             </div>
@@ -272,7 +272,7 @@ class VideoComponent extends React.Component {
               {!_.isEmpty(bounty) && !bountyNotFoundError && (
                 <div className="col-6 bounty" style={{height: 'auto'}}>
                   <div className="row img-container" style={{height: headerImgScreenHeight}}>
-                    <img className="hero-image" src={bounty.meta.backgroundImg} />
+                    <img className="hero-image" src={bounty.meta.backgroundImg} alt="" />
                     <div className="close-btn-container" onClick={this.toggle}>
                       <i className="close-icon icon-cancel-circled2" />
                     </div>
@@ -357,7 +357,13 @@ class VideoComponent extends React.Component {
                         className="tournament-link-footer"
                         target="_blank"
                       >
-                        <img className="rounded-circle" src={favicon} width="30" height="30" />{' '}
+                        <img
+                          className="rounded-circle"
+                          src={favicon}
+                          width="30"
+                          height="30"
+                          alt=""
+                        />{' '}
                         <span className="footer-text">Powered by Matcherino</span>
                       </a>
                     </div>
@@ -403,8 +409,9 @@ class VideoComponent extends React.Component {
                       href="https://matcherino.com"
                       className="tournament-link-footer"
                       target="_blank"
+                      rel="noopener noreferrer"
                     >
-                      <img className="rounded-circle" src={favicon} width="30" height="30" />{' '}
+                      <img className="rounded-circle" src={favicon} width="30" height="30" alt="" />{' '}
                       <span className="footer-text">Powered by Matcherino</span>
                     </a>
                   </div>
@@ -468,6 +475,7 @@ class VideoComponent extends React.Component {
                 src={donor.avatar !== '' ? donor.avatar : defautlAvatr}
                 height="70"
                 width="70"
+                alt=""
               />
             </div>
           </div>
@@ -480,7 +488,7 @@ class VideoComponent extends React.Component {
                   {accounting.formatMoney(donor.amount / 100)}{' '}
                   {type === 'leaderboard' && (
                     <span>
-                      <img className="star-img" src={images[index]} width="30" height="30" />
+                      <img className="star-img" src={images[index]} width="30" height="30" alt="" />
                     </span>
                   )}
                 </span>

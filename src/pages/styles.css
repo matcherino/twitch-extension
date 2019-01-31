@@ -36,6 +36,22 @@
   margin-top: 9px;
 }
 
+.tournament-link {
+  color: #898996 !important;
+}
+
+.tournament-link:hover {
+  text-decoration: none !important;
+}
+
+.tournament-link-footer {
+  color: #fff !important;
+}
+
+.tournament-link-footer:hover {
+  text-decoration: none !important;
+}
+
 .tournament-prize {
   color: #fff;
   text-align: center;
@@ -237,4 +253,16 @@ body {
   position: absolute;
   bottom: 0;
   left: 0;
+}
+
+.control {
+  background-color: transparent;
+}
+
+.control > img {
+  float: right;
+  background-color: #000;
+  padding: 4px;
+  cursor: pointer;
+  margin-right: 15px;
 }

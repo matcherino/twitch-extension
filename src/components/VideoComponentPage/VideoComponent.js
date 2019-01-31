@@ -134,7 +134,8 @@ class VideoComponent extends React.Component {
       headerImgScreenHeight: window.innerHeight / 3.88,
       tournamentDetailScreenHeight: window.innerHeight / 7.95,
       tabDataScreenHeight: window.innerHeight / 2,
-      footerHeight: window.innerHeight / 14.3
+      footerHeight: window.innerHeight / 14.3,
+      showOverlay: true
     };
   }
 
@@ -195,8 +196,11 @@ class VideoComponent extends React.Component {
       });
   };
 
-  minimize = () => {
-    window.Twitch.ext.actions.minimize();
+  toggle = () => {
+    // window.Twitch.ext.actions.minimize();
+    const {showOverlay} = this.state;
+    this.setState({showOverlay: !showOverlay});
+    // console.log('window.Twitch >>>>', window.Twitch);
   };
 
   render() {
@@ -211,7 +215,8 @@ class VideoComponent extends React.Component {
       headerImgScreenHeight,
       tabDataScreenHeight,
       tournamentDetailScreenHeight,
-      parentScreenHeight
+      parentScreenHeight,
+      showOverlay
     } = this.state;
     const donations =
       bounty &&
@@ -244,128 +249,168 @@ class VideoComponent extends React.Component {
     return (
       <div className="container">
         <div className="row">
-          <div className=" pull-right max-width">
-            {!_.isEmpty(bounty) && !bountyNotFoundError && (
-              <div className="col-6 bounty" style={{height: 'auto'}}>
-                <div className="row img-container" style={{height: headerImgScreenHeight}}>
-                  <img className="hero-image" src={bounty.meta.backgroundImg} />
-                  <div className="close-btn-container" onClick={this.minimize}>
-                    <i className="close-icon icon-cancel-circled2" />
-                  </div>
-                </div>
-                <div className="row">
-                  <div
-                    className="tournament-details"
-                    style={{height: tournamentDetailScreenHeight}}
-                  >
-                    {bountyIds.length > 1 && (
-                      <div className="page-indicator-container">
-                        {bountyIds.map((bounty, i) => {
-                          return (
-                            <div
-                              key={i}
-                              className={`page-indicator ${i === index ? 'highlighted' : ''}`}
-                            />
-                          );
-                        })}
-                      </div>
-                    )}
-
-                    {bountyIds.length > 1 && (
-                      <div className="col-1 back-arrow" onClick={() => this.back(index)}>
-                        &lt;
-                      </div>
-                    )}
-
-                    <div className={bountyIds.length > 1 ? 'col-10' : 'col-12'}>
-                      <div className="tournament-name">{bounty.title}</div>
-                      <div className="tournament-prize">
-                        {accounting.formatMoney(bounty.balance / 100)}
-                      </div>
-                    </div>
-                    {bountyIds.length > 1 && (
-                      <div className="col-1 next-arrow" onClick={() => this.next(index)}>
-                        &gt;
-                      </div>
-                    )}
-                  </div>
-                </div>
-                <div className="row">
-                  <div
-                    className={`col-6 nav-tab ${activeTab === 'leaderboard' && 'active'}`}
-                    onClick={() => this.setActiveTab('leaderboard')}
-                  >
-                    <span>Leaderboard</span>
-                  </div>
-                  <div
-                    className={`col-6 nav-tab ${activeTab === 'donors' && 'active'}`}
-                    onClick={() => this.setActiveTab('donors')}
-                  >
-                    <span>Supporters</span>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="tab-data" style={{height: tabDataScreenHeight}}>
-                    {activeTab === 'donors' &&
-                      donations.map((donation, index) => {
-                        return this.renderDonor(donation, 'donors', index);
-                      })}
-
-                    {activeTab === 'leaderboard' &&
-                      topDonations.map((donation, index) => {
-                        return this.renderDonor(donation, 'leaderboard', index);
-                      })}
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="footer" style={{height: footerHeight}}>
-                    <img className="rounded-circle" src={favicon} width="30" height="30" />{' '}
-                    <span className="footer-text">Powered by Matcherino</span>
-                  </div>
-                </div>
+          {!showOverlay && (
+            <div className="pull-right max-width">
+              <div
+                className="col-6 bounty control"
+                style={{height: 'auto', marginTop: headerImgScreenHeight}}
+              >
+                <img
+                  className="rounded-circle"
+                  src={favicon}
+                  onClick={this.toggle}
+                  width="120"
+                  height="120"
+                />
               </div>
-            )}
+            </div>
+          )}
 
-            {bounty && bountyNotFoundError && (
-              <div className="col-6 bounty-container" style={{height: parentScreenHeight}}>
-                <div className="row bounty-error">
-                  <div className="close-btn-container-error">
-                    <span onClick={this.minimize}>
+          {showOverlay && (
+            <div className=" pull-right max-width">
+              {!_.isEmpty(bounty) && !bountyNotFoundError && (
+                <div className="col-6 bounty" style={{height: 'auto'}}>
+                  <div className="row img-container" style={{height: headerImgScreenHeight}}>
+                    <img className="hero-image" src={bounty.meta.backgroundImg} />
+                    <div className="close-btn-container" onClick={this.toggle}>
                       <i className="close-icon icon-cancel-circled2" />
-                    </span>
+                    </div>
                   </div>
-                  <h3>Tournament ID {bountyId} not found.</h3>
-                  {bountyIds.length > 1 && (
-                    <div className="full-width">
-                      <span>
-                        <button
-                          disabled={bountyIds[0] === bountyId}
-                          className="btn btn-primary"
-                          onClick={() => this.back(index)}
-                        >
-                          Back
-                        </button>
-                      </span>
-                      &nbsp;
-                      <span>
-                        <button
-                          disabled={bountyIds[bountyIds.length - 1] === bountyId}
-                          className="btn btn-primary"
-                          onClick={() => this.next(index)}
-                        >
-                          Next
-                        </button>
+                  <div className="row">
+                    <div
+                      className="tournament-details"
+                      style={{height: tournamentDetailScreenHeight}}
+                    >
+                      {bountyIds.length > 1 && (
+                        <div className="page-indicator-container">
+                          {bountyIds.map((bounty, i) => {
+                            return (
+                              <div
+                                key={i}
+                                className={`page-indicator ${i === index ? 'highlighted' : ''}`}
+                              />
+                            );
+                          })}
+                        </div>
+                      )}
+
+                      {bountyIds.length > 1 && (
+                        <div className="col-1 back-arrow" onClick={() => this.back(index)}>
+                          &lt;
+                        </div>
+                      )}
+
+                      <div className={bountyIds.length > 1 ? 'col-10' : 'col-12'}>
+                        <div className="tournament-name">
+                          <a
+                            href={`https://matcherino.com/tournaments/${bounty.id}`}
+                            className="tournament-link"
+                            target="_blank"
+                          >
+                            {bounty.title}
+                          </a>
+                          {/* {bounty.title} */}
+                        </div>
+                        <div className="tournament-prize">
+                          {accounting.formatMoney(bounty.balance / 100)}
+                        </div>
+                      </div>
+                      {bountyIds.length > 1 && (
+                        <div className="col-1 next-arrow" onClick={() => this.next(index)}>
+                          &gt;
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div
+                      className={`col-6 nav-tab ${activeTab === 'leaderboard' && 'active'}`}
+                      onClick={() => this.setActiveTab('leaderboard')}
+                    >
+                      <span>Leaderboard</span>
+                    </div>
+                    <div
+                      className={`col-6 nav-tab ${activeTab === 'donors' && 'active'}`}
+                      onClick={() => this.setActiveTab('donors')}
+                    >
+                      <span>Supporters</span>
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="tab-data" style={{height: tabDataScreenHeight}}>
+                      {activeTab === 'donors' &&
+                        donations.map((donation, index) => {
+                          return this.renderDonor(donation, 'donors', index);
+                        })}
+
+                      {activeTab === 'leaderboard' &&
+                        topDonations.map((donation, index) => {
+                          return this.renderDonor(donation, 'leaderboard', index);
+                        })}
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="footer" style={{height: footerHeight}}>
+                      <a
+                        href={`https://matcherino.com/tournaments/${bounty.id}`}
+                        className="tournament-link-footer"
+                        target="_blank"
+                      >
+                        <img className="rounded-circle" src={favicon} width="30" height="30" />{' '}
+                        <span className="footer-text">Powered by Matcherino</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {bounty && bountyNotFoundError && (
+                <div className="col-6 bounty-container" style={{height: parentScreenHeight}}>
+                  <div className="row bounty-error">
+                    <div className="close-btn-container-error">
+                      <span onClick={this.toggle}>
+                        <i className="close-icon icon-cancel-circled2" />
                       </span>
                     </div>
-                  )}
+                    <h3>Tournament ID {bountyId} not found.</h3>
+                    {bountyIds.length > 1 && (
+                      <div className="full-width">
+                        <span>
+                          <button
+                            disabled={bountyIds[0] === bountyId}
+                            className="btn btn-primary"
+                            onClick={() => this.back(index)}
+                          >
+                            Back
+                          </button>
+                        </span>
+                        &nbsp;
+                        <span>
+                          <button
+                            disabled={bountyIds[bountyIds.length - 1] === bountyId}
+                            className="btn btn-primary"
+                            onClick={() => this.next(index)}
+                          >
+                            Next
+                          </button>
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                  <div className="error-page footer" style={{height: footerHeight}}>
+                    <a
+                      href="https://matcherino.com"
+                      className="tournament-link-footer"
+                      target="_blank"
+                    >
+                      <img className="rounded-circle" src={favicon} width="30" height="30" />{' '}
+                      <span className="footer-text">Powered by Matcherino</span>
+                    </a>
+                  </div>
                 </div>
-                <div className="error-page footer" style={{height: footerHeight}}>
-                  <img className="rounded-circle" src={favicon} width="30" height="30" />{' '}
-                  <span className="footer-text">Powered by Matcherino</span>
-                </div>
-              </div>
-            )}
-          </div>
+              )}
+            </div>
+          )}
         </div>
       </div>
     );

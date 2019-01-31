@@ -143,7 +143,7 @@ class VideoComponent extends React.Component {
     this.getDonation();
   }
 
-  handleResize = () =>
+  handleResize = () => {
     this.setState({
       parentScreenHeight: window.innerHeight,
       headerImgScreenHeight: window.innerHeight / 3.88,
@@ -151,6 +151,7 @@ class VideoComponent extends React.Component {
       tabDataScreenHeight: window.innerHeight / 2,
       footerHeight: window.innerHeight / 14.3
     });
+  }
 
   componentDidMount() {
     this.getDonationInterval = setInterval(this.getDonation, 10000);

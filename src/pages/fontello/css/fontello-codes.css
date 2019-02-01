@@ -2,4 +2,7 @@
 .icon-layout:before { content: '\e800'; } /* '' */
 .icon-cancel-circled2:before { content: '\e801'; } /* '' */
 .icon-cancel-circled:before { content: '\e802'; } /* '' */
+.icon-cancel:before { content: '\e803'; } /* '' */
+.icon-cancel-1:before { content: '\e804'; } /* '' */
+.icon-cancel-2:before { content: '\e805'; } /* '' */
 .icon-question-circle-o:before { content: '\f29c'; } /* '' */

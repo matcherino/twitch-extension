@@ -259,8 +259,8 @@ class VideoComponent extends React.Component {
                   className="rounded-circle"
                   src={favicon}
                   onClick={this.toggle}
-                  width="120"
-                  height="120"
+                  width="70"
+                  height="70"
                   alt=""
                 />
               </div>
@@ -274,7 +274,7 @@ class VideoComponent extends React.Component {
                   <div className="row img-container" style={{height: headerImgScreenHeight}}>
                     <img className="hero-image" src={bounty.meta.backgroundImg} alt="" />
                     <div className="close-btn-container" onClick={this.toggle}>
-                      <i className="close-icon icon-cancel-circled2" />
+                      <i className="close-icon icon-cancel-2" />
                     </div>
                   </div>
                   <div className="row">
@@ -302,16 +302,7 @@ class VideoComponent extends React.Component {
                       )}
 
                       <div className={bountyIds.length > 1 ? 'col-10' : 'col-12'}>
-                        <div className="tournament-name">
-                          <a
-                            href={`https://matcherino.com/tournaments/${bounty.id}`}
-                            className="tournament-link"
-                            target="_blank"
-                          >
-                            {bounty.title}
-                          </a>
-                          {/* {bounty.title} */}
-                        </div>
+                        <div className="tournament-name">{bounty.title}</div>
                         <div className="tournament-prize">
                           {accounting.formatMoney(bounty.balance / 100)}
                         </div>
@@ -352,20 +343,8 @@ class VideoComponent extends React.Component {
                   </div>
                   <div className="row">
                     <div className="footer" style={{height: footerHeight}}>
-                      <a
-                        href={`https://matcherino.com/tournaments/${bounty.id}`}
-                        className="tournament-link-footer"
-                        target="_blank"
-                      >
-                        <img
-                          className="rounded-circle"
-                          src={favicon}
-                          width="30"
-                          height="30"
-                          alt=""
-                        />{' '}
-                        <span className="footer-text">Powered by Matcherino</span>
-                      </a>
+                      <img className="rounded-circle" src={favicon} width="30" height="30" alt="" />{' '}
+                      <span className="footer-text">Powered by Matcherino</span>
                     </div>
                   </div>
                 </div>
@@ -376,7 +355,7 @@ class VideoComponent extends React.Component {
                   <div className="row bounty-error">
                     <div className="close-btn-container-error">
                       <span onClick={this.toggle}>
-                        <i className="close-icon icon-cancel-circled2" />
+                        <i className="close-icon icon-cancel-2" />
                       </span>
                     </div>
                     <h3>Tournament ID {bountyId} not found.</h3>
@@ -405,15 +384,8 @@ class VideoComponent extends React.Component {
                     )}
                   </div>
                   <div className="error-page footer" style={{height: footerHeight}}>
-                    <a
-                      href="https://matcherino.com"
-                      className="tournament-link-footer"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <img className="rounded-circle" src={favicon} width="30" height="30" alt="" />{' '}
-                      <span className="footer-text">Powered by Matcherino</span>
-                    </a>
+                    <img className="rounded-circle" src={favicon} width="30" height="30" alt="" />{' '}
+                    <span className="footer-text">Powered by Matcherino</span>
                   </div>
                 </div>
               )}
@@ -427,14 +399,6 @@ class VideoComponent extends React.Component {
   setActiveTab = tab => {
     this.setState({activeTab: tab});
   };
-
-  // show = () => {
-  //   this.setState({showOverlay: true});
-  // };
-
-  // hide = () => {
-  //   this.setState({showOverlay: false});
-  // };
 
   back = index => {
     const {bountyIds, bountyId} = this.state;

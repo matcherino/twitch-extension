@@ -29,6 +29,24 @@
       "css": "cancel-circled",
       "code": 59394,
       "src": "fontawesome"
+    },
+    {
+      "uid": "499b745a2e2485bdd059c3a53d048e5f",
+      "css": "cancel",
+      "code": 59395,
+      "src": "elusive"
+    },
+    {
+      "uid": "11e664deed5b2587456a4f9c01d720b6",
+      "css": "cancel-1",
+      "code": 59396,
+      "src": "iconic"
+    },
+    {
+      "uid": "5211af474d3a9848f67f945e2ccaf143",
+      "css": "cancel-2",
+      "code": 59397,
+      "src": "fontawesome"
     }
   ]
 }
